@@ -1,0 +1,70 @@
+
+<form class="form form-edit-account" action="<?php /* @escapeNotVerified */ echo $block->getUrl('customkits/customkits/createPost') ?>" method="post" id="form-validate" enctype="multipart/form-data" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" autocomplete="off">
+    <fieldset class="fieldset info">
+        <div class="field productsinput required">
+            <table id="myTable"><tr><th></th><th>
+                        <label class="label" for="productsinput"><span>Products</span></label></th><th>
+                        <label class="label" for="qty"><span>Quantity</span></label></th><th></th></tr>
+                <tr id="producttextbox"><td><input type="button" name="addfield" class="button" value="+" onclick="addField(this);"></td><td><input type="text" name="productsinput[]" id="productsinput[]"  title="Products"/></td>
+                    <td><input type="text" name="qty[]" id="qty[]" data-role="qty"  title="Quantity"/></td><td><input type="button" class="button" name="removefield" value="-" onclick="deleteField(this)"></td></tr></table>
+        </div>
+        <div class="field noofkits required">
+            <label class="label" for="noofkits"><span>No.of Kits Needed</span></label>
+            <input type="text" name="noofkits" id="noofkits" data-role="noofkits" title="No.of Kits Needed"/>
+        </div>
+         <div class="field comments">
+             <label class="label" for="comments"><span>Comments</span></label>
+             <textarea name="comments" id="comments" data-role="comments" title="Comments"/></textarea>
+        </div>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action save primary" title="<?php /* @escapeNotVerified */ echo __('Save') ?>"><span><?php /* @escapeNotVerified */ echo __('Save') ?></span></button>
+        </div>
+         
+    </div>
+  </fieldset>
+</form>
+ 
+  <script type="text/javascript">
+function deleteField(r) {
+    var i = r.parentNode.parentNode.rowIndex;
+    document.getElementById("myTable").deleteRow(i);
+}
+/*
+function addField(argument) {
+        /*var myTable = document.getElementById("myTable");
+        var currentIndex = myTable.rows.length;
+        var currentRow = myTable.insertRow(-1);
+   var addRowBox = document.createElement("input");
+        addRowBox.setAttribute("type", "button");
+        addRowBox.setAttribute("value", "+");
+        addRowBox.setAttribute("onclick", "addField();");
+        addRowBox.setAttribute("class", "button");
+        var linksBox = document.createElement("input");
+        linksBox.setAttribute("name", "productsinput" + currentIndex);
+        var keywordsBox = document.createElement("input");
+        keywordsBox.setAttribute("name", "qty" + currentIndex);
+
+        var violationsBox = document.createElement("input");
+        violationsBox.setAttribute("type", "button");
+        violationsBox.setAttribute("value", "-");
+        violationsBox.setAttribute("onclick", "deleteField(this)");
+        violationsBox.setAttribute("class", "button");
+    var currentCell = currentRow.insertCell(-1);
+        currentCell.appendChild(addRowBox);
+        currentCell = currentRow.insertCell(-1);
+        currentCell.appendChild(linksBox);
+        currentCell = currentRow.insertCell(-1);
+        currentCell.appendChild(keywordsBox);
+
+        currentCell = currentRow.insertCell(-1);
+        currentCell.appendChild(violationsBox);
+    
+      
+    } */
+    function addField(n)
+{
+    var tr = n.parentNode.parentNode.cloneNode(true);
+    document.getElementById('myTable').appendChild(tr);
+}
+</script>
